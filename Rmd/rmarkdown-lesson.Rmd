@@ -1,0 +1,58 @@
+---
+title: "Untitled"
+output: html_document
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Header 1
+
+### Header 3
+
+#### Subheader (4th level)
+
+Write some sample text here. **Bold text** *Not a new paragraph* [@oke2020]
+
+1.  sub headers
+2.  apple
+3.  banana
+4.  kiwi
+5.  italic text
+6.  numbered list
+
+inserting an R chunk
+
++ cmd + option + i
++ ctrl + alt + i
+
+running code
+
+- cntrl + enter
+
+
+add lines to R code chunk
+experiment with different ways to run code (run menu, play button, control-enter)
+```{r}
+x <- 3 + 2
+y <- x - 12
+y
+```
+
+## Read in data
+
+```{r}
+bg_chem <- read.csv("../data/BGchem2008data.csv")
+```
+
+
+## Analysis
+
+## Plots
+
+```{r, echo = FALSE}
+plot(bg_chem$CTD_Depth, bg_chem$CTD_Temperature)
+```
+
