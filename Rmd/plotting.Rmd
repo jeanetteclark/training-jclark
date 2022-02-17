@@ -45,3 +45,49 @@ annual_esc <- esc %>%
 head(annual_esc)
 ```
 
+## ggplot
+
+barplot
+
+```{r}
+my_theme <- theme_bw() +
+  theme(legend.position = "bottom")
+
+ggplot(annual_esc, mapping = aes(x = Species, y = escapement, fill = SASAP.Region)) +
+  geom_col(position = "stack") +
+  my_theme
+```
+
+```{r}
+kodiak_esc <- annual_esc %>% 
+  filter(SASAP.Region == "Kodiak")
+```
+
+```{r}
+
+
+ggplot(kodiak_esc, aes(x = Year, y = escapement, color = Species)) +
+  geom_point() +
+  scale_color_brewer(palette = "Dark2") +
+  scale_y_continuous(labels = comma, n.breaks = 3) +
+  geom_line() +
+  ylab("Escapement (num fish)") +
+  ggtitle("Kodiak Escapement") +
+  my_theme
+
+```
+
+## leaflet
+
+```{r}
+locations <- esc %>% 
+  distinct(Location, Latitude, Longitude) %>% 
+  drop_na()
+```
+
+```{r}
+leaflet(locations) %>% 
+  addTiles() %>% 
+  addPopups()
+```
+
