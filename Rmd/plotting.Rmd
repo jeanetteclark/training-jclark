@@ -50,12 +50,14 @@ head(annual_esc)
 barplot
 
 ```{r}
-my_theme <- theme_bw() +
-  theme(legend.position = "bottom")
+source("../R/custom_theme.R")
+```
 
+
+```{r}
 ggplot(annual_esc, mapping = aes(x = Species, y = escapement, fill = SASAP.Region)) +
   geom_col(position = "stack") +
-  my_theme
+  custom_theme(20)
 ```
 
 ```{r}
